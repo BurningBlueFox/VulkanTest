@@ -23,4 +23,9 @@ namespace lve
 		window = glfwCreateWindow(width, height, windowName.c_str(), nullptr, nullptr);
 	}
 
+	bool LveWindow::shouldClose()
+	{
+		return glfwWindowShouldClose(window);
+	}
+
 }
