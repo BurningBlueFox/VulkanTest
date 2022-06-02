@@ -12,8 +12,10 @@ namespace lve
 	public:
 		LveWindow(int w, int h, std::string name);
 		~LveWindow();
+
 		bool shouldClose();
 		void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
+		VkExtent2D getExtent() { return { static_cast<uint32_t>(width), static_cast<uint32_t>(height) }; }
 
 		LveWindow(const LveWindow&) = delete;
 		LveWindow& operator=(const LveWindow&) = delete;

@@ -19,10 +19,8 @@ namespace lve
 		vkDestroyPipeline(lveDevice.device(), graphicsPipeline, nullptr);
 	}
 
-	PipelineConfigInfo LvePipeline::defaultPipelineConfigInfo(uint32_t width, uint32_t height)
+	void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo, uint32_t width, uint32_t height)
 	{
-		PipelineConfigInfo configInfo{};
-
 		//Input primitives
 		configInfo.inputAssemblyInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
 		configInfo.inputAssemblyInfo.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
@@ -40,7 +38,6 @@ namespace lve
 		configInfo.scissor.offset = { 0, 0 };
 		configInfo.scissor.extent = { width, height };
 
-		//Viewport + Scissor
 		configInfo.viewportInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
 		configInfo.viewportInfo.viewportCount = 1;
 		configInfo.viewportInfo.pViewports = &configInfo.viewport;
@@ -101,8 +98,6 @@ namespace lve
 		configInfo.depthStencilInfo.stencilTestEnable = VK_FALSE;
 		configInfo.depthStencilInfo.front = {};
 		configInfo.depthStencilInfo.back = {};
-
-		return configInfo;
 	}
 
 	std::vector<char> LvePipeline::readFile(const std::string& filepath)
@@ -159,6 +154,8 @@ namespace lve
 		vertexInputInfo.pVertexAttributeDescriptions = nullptr;
 		vertexInputInfo.pVertexBindingDescriptions = nullptr;
 
+
+
 		VkGraphicsPipelineCreateInfo pipelineInfo{};
 		pipelineInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
 		pipelineInfo.stageCount = 2;
@@ -179,7 +176,7 @@ namespace lve
 		pipelineInfo.basePipelineIndex = -1;
 		pipelineInfo.basePipelineHandle = VK_NULL_HANDLE;
 
-		if(vkCreateGraphicsPipelines(lveDevice.device(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
+		if (vkCreateGraphicsPipelines(lveDevice.device(), VK_NULL_HANDLE, 1, &pipelineInfo, nullptr, &graphicsPipeline) != VK_SUCCESS)
 		{
 			throw std::runtime_error("failed to create graphics pipeline");
 		}
@@ -192,7 +189,7 @@ namespace lve
 		createInfo.codeSize = code.size();
 		createInfo.pCode = reinterpret_cast<const uint32_t*>(code.data());
 
-		if(vkCreateShaderModule(lveDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS)
+		if (vkCreateShaderModule(lveDevice.device(), &createInfo, nullptr, shaderModule) != VK_SUCCESS)
 		{
 			throw std::runtime_error("failed to create shader module");
 		}
