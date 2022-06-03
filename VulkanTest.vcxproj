@@ -71,16 +71,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CustomBuildBeforeTargets>Build</CustomBuildBeforeTargets>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -98,9 +102,17 @@
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>./compile.bat</Command>
-      <Message>Compiling Shaders</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>call ./compile.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Compiling shaders</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,9 +134,17 @@
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>./compile.bat</Command>
-      <Message>Compiling Shaders</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>call ./compile.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Compiling shaders</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -142,9 +162,17 @@
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>./compile.bat</Command>
-      <Message>Compiling Shaders</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>call ./compile.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Compiling shaders</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -166,9 +194,17 @@
       <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
-      <Command>./compile.bat</Command>
-      <Message>Compiling Shaders</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>call ./compile.bat</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Compiling shaders</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="first_app.cpp" />
