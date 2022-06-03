@@ -19,6 +19,11 @@ namespace lve
 		vkDestroyPipeline(lveDevice.device(), graphicsPipeline, nullptr);
 	}
 
+	void LvePipeline::bind(VkCommandBuffer commandBuffer)
+	{
+		vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);
+	}
+
 	void LvePipeline::defaultPipelineConfigInfo(PipelineConfigInfo& configInfo, uint32_t width, uint32_t height)
 	{
 		//Input primitives
@@ -68,7 +73,7 @@ namespace lve
 
 		//Blending
 		configInfo.colorBlendAttachment.colorWriteMask =
-			VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
+			VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT | VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT;
 		configInfo.colorBlendAttachment.blendEnable = VK_FALSE;
 		configInfo.colorBlendAttachment.srcColorBlendFactor = VK_BLEND_FACTOR_ONE;
 		configInfo.colorBlendAttachment.dstColorBlendFactor = VK_BLEND_FACTOR_ZERO;
